@@ -81,14 +81,10 @@ public class Controller {
 
         //run each of the methods for the requirements
         //if all return true adn age is >=18, the applicant passes onto the interview
-        //print list of days and times
-        //ask user to pick a timeslot from the list
-        //remove that time slot from the list fro the next user
-        //print the confrimation message
-        //exit application
+            //hide applicationPane and show acceptancePane
         //else, applicant is sent rejection letter
+            //hide applicationPane and show rejectionPane
         //loop through to see what the false requirement was and print the requirement vs what the user input
-        //exit application
     }
 
     @FXML
