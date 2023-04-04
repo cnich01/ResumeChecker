@@ -7,7 +7,7 @@
 
 <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="1064.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
     <children>
-        <Pane id="applicationPane" prefHeight="1064.0" prefWidth="600.0">
+        <Pane id="applicationPane" fx:id="applicationPane" prefHeight="1064.0" prefWidth="600.0">
             <children>
                 <Label layoutX="243.0" layoutY="246.0" text="Application">
                     <font>
@@ -20,10 +20,10 @@
                         <Font size="24.0" />
                     </font>
                 </Label>
-                <TextField id="firstNameTxt" layoutX="77.0" layoutY="318.0" promptText="First Name" />
-                <TextField id="lastNameTxt" layoutX="237.0" layoutY="318.0" promptText="Last Name" />
-                <TextField id="positionTxt" layoutX="77.0" layoutY="371.0" promptText="Position Interested In" />
-                <DatePicker id="birthDatePicker" layoutX="403.0" layoutY="318.0" prefHeight="25.0" prefWidth="120.0" promptText="Date of Birth" />
+                <TextField id="firstNameTxt" fx:id="firstNameTxt" layoutX="77.0" layoutY="318.0" promptText="First Name" />
+                <TextField id="lastNameTxt" fx:id="lastNameTxt" layoutX="237.0" layoutY="318.0" promptText="Last Name" />
+                <TextField id="positionTxt" fx:id="positionTxt" layoutX="77.0" layoutY="371.0" promptText="Position Interested In" />
+                <DatePicker id="birthDatePicker" fx:id="birthDatePicker" layoutX="403.0" layoutY="318.0" prefHeight="25.0" prefWidth="120.0" promptText="Date of Birth" />
                 <Label layoutX="302.0" layoutY="363.0" text="Are you able to work in the US?" />
                 <Label layoutX="77.0" layoutY="428.0" text="Please enter your years of experience in the following languages:" />
                 <Label layoutX="151.0" layoutY="472.0" text="Java:" />
@@ -34,54 +34,54 @@
                 <Label layoutX="77.0" layoutY="621.0" text="Do you have strong analytical and technical troubleshooting skills?" />
                 <Label layoutX="77.0" layoutY="681.0" text="Do you have strong written and verbal communication skills?" />
                 <Label layoutX="89.0" layoutY="970.0" text="Please ensure all above information is filled out correctly before submitting" />
-                <Button id="submitApplicationBtn" layoutX="229.0" layoutY="998.0" mnemonicParsing="false" text="Submit Application" />
-                <RadioButton id="workYesBtn" layoutX="338.0" layoutY="388.0" mnemonicParsing="false" text="Yes">
+                <Button id="submitApplicationBtn" fx:id="submitAppBtn" layoutX="229.0" layoutY="998.0" mnemonicParsing="false" onAction="#submitApplication" text="Submit Application" />
+                <RadioButton id="workYesBtn" fx:id="workYesBtn" layoutX="338.0" layoutY="388.0" mnemonicParsing="false" text="Yes">
                     <toggleGroup>
                         <ToggleGroup fx:id="work" />
                     </toggleGroup>
                 </RadioButton>
-                <RadioButton id="workNoBtn" layoutX="400.0" layoutY="388.0" mnemonicParsing="false" text="No" toggleGroup="$work" />
-                <RadioButton id="bachelorsYesBtn" layoutX="224.0" layoutY="585.0" mnemonicParsing="false" text="Yes">
+                <RadioButton id="workNoBtn" fx:id="workNoBtn" layoutX="400.0" layoutY="388.0" mnemonicParsing="false" text="No" toggleGroup="$work" />
+                <RadioButton id="bachelorsYesBtn" fx:id="bachelorsYesBtn" layoutX="224.0" layoutY="585.0" mnemonicParsing="false" text="Yes">
                     <toggleGroup>
                         <ToggleGroup fx:id="bachelors" />
                     </toggleGroup>
                 </RadioButton>
-                <RadioButton id="bachelorsNoBtn" layoutX="292.0" layoutY="585.0" mnemonicParsing="false" text="No" toggleGroup="$bachelors" />
-                <RadioButton id="troubleshootingNoBtn" layoutX="292.0" layoutY="644.0" mnemonicParsing="false" text="No">
+                <RadioButton id="bachelorsNoBtn" fx:id="bachelorsNoBtn" layoutX="292.0" layoutY="585.0" mnemonicParsing="false" text="No" toggleGroup="$bachelors" />
+                <RadioButton id="troubleshootingNoBtn" fx:id="troubleshootingNoBtn" layoutX="292.0" layoutY="644.0" mnemonicParsing="false" text="No">
                     <toggleGroup>
                         <ToggleGroup fx:id="troubleshooting" />
                     </toggleGroup>
                 </RadioButton>
-                <RadioButton id="communicationNoBtn" layoutX="292.0" layoutY="704.0" mnemonicParsing="false" text="No">
+                <RadioButton id="communicationNoBtn" fx:id="communicationNoBtn" layoutX="292.0" layoutY="704.0" mnemonicParsing="false" text="No">
                     <toggleGroup>
                         <ToggleGroup fx:id="communication" />
                     </toggleGroup>
                 </RadioButton>
-                <RadioButton id="troubleshootingYesBtn" layoutX="224.0" layoutY="644.0" mnemonicParsing="false" text="Yes" toggleGroup="$troubleshooting" />
-                <RadioButton id="communicationYesBtn" layoutX="224.0" layoutY="704.0" mnemonicParsing="false" text="Yes" toggleGroup="$communication" />
-                <ChoiceBox id="javaYears" layoutX="190.0" layoutY="468.0" prefHeight="25.0" prefWidth="69.0" />
-                <ChoiceBox id="htmlYears" layoutX="190.0" layoutY="506.0" prefHeight="25.0" prefWidth="69.0" />
-                <ChoiceBox id="cPlusYears" layoutX="338.0" layoutY="468.0" prefHeight="25.0" prefWidth="69.0" />
-                <ChoiceBox id="cSharpYears" layoutX="338.0" layoutY="506.0" prefHeight="25.0" prefWidth="69.0" />
+                <RadioButton id="troubleshootingYesBtn" fx:id="troubleshootingYesBtn" layoutX="224.0" layoutY="644.0" mnemonicParsing="false" text="Yes" toggleGroup="$troubleshooting" />
+                <RadioButton id="communicationYesBtn" fx:id="communicationYesBtn" layoutX="224.0" layoutY="704.0" mnemonicParsing="false" text="Yes" toggleGroup="$communication" />
+                <ChoiceBox id="javaYears" fx:id="javaYearsPicker" layoutX="190.0" layoutY="468.0" prefHeight="25.0" prefWidth="69.0" />
+                <ChoiceBox id="htmlYears" fx:id="HTMLYearsPicker" layoutX="190.0" layoutY="506.0" prefHeight="25.0" prefWidth="69.0" />
+                <ChoiceBox id="cPlusYears" fx:id="cPlusYearsPicker" layoutX="338.0" layoutY="468.0" prefHeight="25.0" prefWidth="69.0" />
+                <ChoiceBox id="cSharpYears" fx:id="cSharpYearsPicker" layoutX="338.0" layoutY="506.0" prefHeight="25.0" prefWidth="69.0" />
                 <TextField alignment="TOP_LEFT" layoutX="78.0" layoutY="751.0" prefHeight="188.0" prefWidth="438.0" promptText="Please enter any other information you would like us to know." />
             </children>
         </Pane>
-        <Pane id="acceptancePane" prefHeight="597.0" prefWidth="600.0" visible="false">
+        <Pane id="acceptancePane" fx:id="acceptancePane" prefHeight="597.0" prefWidth="600.0" visible="false">
             <children>
                 <Label layoutX="80.0" layoutY="46.0" prefHeight="83.0" prefWidth="446.0" text="Congratulations! You have qulified for an interview!&#10;&#10;Please select three dates that work for you, and a member of our team will reach out to shedule your interview with you." textAlignment="CENTER" wrapText="true" />
-                <DatePicker id="dateOnePicker" layoutX="216.0" layoutY="180.0" promptText="Date One" />
-                <DatePicker id="dateTwoPicker" layoutX="216.0" layoutY="248.0" promptText="Date Two" />
-                <DatePicker id="dateThreePicker" layoutX="216.0" layoutY="327.0" promptText="Date Three" />
+                <DatePicker id="dateOnePicker" fx:id="dateOnePicker" layoutX="216.0" layoutY="180.0" promptText="Date One" />
+                <DatePicker id="dateTwoPicker" fx:id="dateTwoPicker" layoutX="216.0" layoutY="248.0" promptText="Date Two" />
+                <DatePicker id="dateThreePicker" fx:id="dateThreePicker" layoutX="216.0" layoutY="327.0" promptText="Date Three" />
                 <Label layoutX="105.0" layoutY="487.0" text="Please ensure all above information is filled out correctly before submitting" />
-                <Button id="submitApplicationBtn" layoutX="273.0" layoutY="528.0" mnemonicParsing="false" text="Submit" />
+                <Button id="submitApplicationBtn" fx:id="submitInterviewBtn" layoutX="273.0" layoutY="528.0" mnemonicParsing="false" onAction="#exitApplication" text="Submit" />
             </children>
         </Pane>
-        <Pane id="rejectionPane" prefHeight="787.0" prefWidth="600.0" visible="false">
+        <Pane id="rejectionPane" fx:id="rejectionPane" prefHeight="787.0" prefWidth="600.0" visible="false">
             <children>
-                <Label id="requirementsLbl" alignment="TOP_LEFT" layoutX="90.0" layoutY="221.0" prefHeight="215.0" prefWidth="420.0" text="Unfulfilled Requirements" wrapText="true" />
-                <Label layoutX="91.0" layoutY="60.0" prefHeight="83.0" prefWidth="446.0" text="We're regret to inform you that you do not qualify for an interview at this time.&#10;&#10;The following requirements were not met in your application:" textAlignment="CENTER" wrapText="true" />
+                <Label id="requirementsLbl" fx:id="requirementsLbl" alignment="TOP_LEFT" layoutX="90.0" layoutY="221.0" prefHeight="215.0" prefWidth="420.0" text="Unfulfilled Requirements" wrapText="true" />
+                <Label layoutX="91.0" layoutY="60.0" prefHeight="83.0" prefWidth="446.0" text="We regret to inform you that you do not qualify for an interview at this time.&#10;&#10;The following requirements were not met in your application:" textAlignment="CENTER" wrapText="true" />
                 <Label layoutX="128.0" layoutY="498.0" text="Feel free to apply again after fulfilling the requirements above." />
-                <Button id="submitApplicationBtn" layoutX="275.0" layoutY="548.0" mnemonicParsing="false" text="Exit" />
+                <Button id="submitApplicationBtn" fx:id="exitBtn" layoutX="275.0" layoutY="548.0" mnemonicParsing="false" onAction="#exitApplication" text="Exit" />
             </children>
         </Pane>
     </children>
