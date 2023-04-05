@@ -17,11 +17,22 @@ public class Controller {
 
     //text fields
     @FXML
+    TextField firstNameTxt;
+    @FXML
+    TextField lastNameTxt;
+    @FXML
     TextField positionTxt;
 
     //date pickers
     @FXML
     DatePicker birthDatePicker;
+    @FXML
+    DatePicker dateOnePicker;
+    @FXML
+    DatePicker dateTwoPicker;
+    @FXML
+    DatePicker dateThreePicker;
+
 
     //toggle groups
     @FXML
@@ -98,6 +109,15 @@ public class Controller {
         applicationPane.setVisible(true);
         acceptancePane.setVisible(false);
         rejectionPane.setVisible(false);
+
+        workYesBtn.setToggleGroup(work);
+        workNoBtn.setToggleGroup(work);
+        bachelorsYesBtn.setToggleGroup(bachelors);
+        bachelorsNoBtn.setToggleGroup(bachelors);
+        troubleshootingYesBtn.setToggleGroup(troubleshooting);
+        troubleshootingNoBtn.setToggleGroup(troubleshooting);
+        communicationYesBtn.setToggleGroup(communication);
+        communicationNoBtn.setToggleGroup(communication);
     }
 
     //methods to check requirements
