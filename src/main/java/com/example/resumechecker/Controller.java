@@ -6,6 +6,9 @@ import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.layout.Pane;
 
+import java.time.LocalDate;
+import java.time.Period;
+
 public class Controller {
     //panes
     @FXML
@@ -64,13 +67,13 @@ public class Controller {
 
     //choice boxes
     @FXML
-    ChoiceBox<?> javaYearsPicker;
+    ChoiceBox<String> javaYearsPicker;
     @FXML
-    ChoiceBox<?> HTMLYearsPicker;
+    ChoiceBox<String> HTMLYearsPicker;
     @FXML
-    ChoiceBox<?> cPlusYearsPicker;
+    ChoiceBox<String> cPlusYearsPicker;
     @FXML
-    ChoiceBox<?> cSharpYearsPicker;
+    ChoiceBox<String> cSharpYearsPicker;
 
     //labels
     @FXML
@@ -84,18 +87,19 @@ public class Controller {
     @FXML
     Button exitBtn;
 
+    String missingRequirements = null;
 
     //methods
     @FXML
     void submitApplication(ActionEvent event) {
-        //get user's birth date, subtract from current date and store to age
-
-        //run each of the methods for the requirements
-        //if all return true adn age is >=18, the applicant passes onto the interview
-            //hide applicationPane and show acceptancePane
-        //else, applicant is sent rejection letter
-            //hide applicationPane and show rejectionPane
-        //loop through to see what the false requirement was and print the requirement vs what the user input
+        if(isAtLeast18() && canWork() && hasJavaExperience() && hasHTMLExperience() && hasCPlusExperience() && hasCSharpExperience() && hasBachelors() && hasTroubleshootingSkills() && hasCommunicationSkills()){
+            applicationPane.setVisible(false);
+            acceptancePane.setVisible(true);
+        }
+        else{
+            applicationPane.setVisible(false);
+            rejectionPane.setVisible(true);
+        }
     }
 
     @FXML
@@ -118,15 +122,90 @@ public class Controller {
         troubleshootingNoBtn.setToggleGroup(troubleshooting);
         communicationYesBtn.setToggleGroup(communication);
         communicationNoBtn.setToggleGroup(communication);
+
+        javaYearsPicker.getItems().add("<1");
+        javaYearsPicker.getItems().add("1-2");
+        javaYearsPicker.getItems().add("3-4");
+        javaYearsPicker.getItems().add("5+");
+
+        HTMLYearsPicker.getItems().add("<1");
+        HTMLYearsPicker.getItems().add("1-2");
+        HTMLYearsPicker.getItems().add("3-4");
+        HTMLYearsPicker.getItems().add("5+");
+
+        cPlusYearsPicker.getItems().add("<1");
+        cPlusYearsPicker.getItems().add("1-2");
+        cPlusYearsPicker.getItems().add("3-4");
+        cPlusYearsPicker.getItems().add("5+");
+
+        cSharpYearsPicker.getItems().add("<1");
+        cSharpYearsPicker.getItems().add("1-2");
+        cSharpYearsPicker.getItems().add("3-4");
+        cSharpYearsPicker.getItems().add("5+");
     }
 
     //methods to check requirements
+
+    //checks that user is at least 18 years old
+    public boolean isAtLeast18(){
+        LocalDate today = LocalDate.now(); // Today's date is 10th Jan 2022
+        LocalDate birthday = birthDatePicker.getValue(); // Birth date
+
+        Period p = Period.between(birthday, today);
+
+        if((p.getYears()==18)||(p.getYears()>18)){
+            return true;
+        }
+        else{
+            missingRequirements = missingRequirements + "\n-Not at least 18 years of age";
+            return false;
+        }
+    }
+
     //checks that user has marked "5+" on the programming languages questions
-    //public boolean hasExperience(){
-       //if java, html, c++, and c# all are 5+
-            //return true
-        //else return false
-    //}
+    public boolean hasJavaExperience(){
+       String value = (String) javaYearsPicker.getValue();
+       if(value.equals("5+")){
+           return true;
+       }
+       else{
+           missingRequirements = missingRequirements + "\n-Lacks enough Java experience";
+           return false;
+       }
+    }
+
+    public boolean hasHTMLExperience(){
+        String value = (String) HTMLYearsPicker.getValue();
+        if(value.equals("5+")){
+            return true;
+        }
+        else{
+            missingRequirements = missingRequirements + "\n-Lacks enough HTML experience";
+            return false;
+        }
+    }
+
+    public boolean hasCPlusExperience(){
+        String value = (String) cPlusYearsPicker.getValue();
+        if(value.equals("5+")){
+            return true;
+        }
+        else{
+            missingRequirements = missingRequirements + "\n-Lacks enough C++ experience";
+            return false;
+        }
+    }
+
+    public boolean hasCSharpExperience(){
+        String value = (String) cSharpYearsPicker.getValue();
+        if(value.equals("5+")){
+            return true;
+        }
+        else{
+            missingRequirements = missingRequirements + "\n-Lacks enough C# experience";
+            return false;
+        }
+    }
 
     //checks that user has marked "yes" on the work authorization question
     public boolean canWork(){
@@ -134,6 +213,7 @@ public class Controller {
             return true;
         }
         else{
+            missingRequirements = missingRequirements + "\n-Unable to work in the US";
             return false;
         }
     }
@@ -144,6 +224,7 @@ public class Controller {
             return true;
         }
         else{
+            missingRequirements = missingRequirements + "\n-Lacks a Bachelor's Degree in Computer Science or engineering related field";
             return false;
         }
     }
@@ -154,6 +235,7 @@ public class Controller {
             return true;
         }
         else{
+            missingRequirements = missingRequirements + "\n-Lacks troubleshooting skills";
             return false;
         }
     }
@@ -164,6 +246,7 @@ public class Controller {
             return true;
         }
         else{
+            missingRequirements = missingRequirements + "\n-Lacks communication skills";
             return false;
         }
     }
