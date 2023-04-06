@@ -10,7 +10,7 @@ public class ResumeChecker extends javafx.application.Application {
     @Override
     public void start(Stage stage) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(ResumeChecker.class.getResource("view.fxml"));
-        Scene scene = new Scene(fxmlLoader.load(), 320, 240);
+        Scene scene = new Scene(fxmlLoader.load(), 600, 1064);
         stage.setTitle("Resume Checker");
         stage.setScene(scene);
         stage.show();

@@ -87,16 +87,29 @@ public class Controller {
     @FXML
     Button exitBtn;
 
-    String missingRequirements = null;
+    String missingRequirements = "Missing Requirements:";
+    boolean accepted = true;
 
     //methods
     @FXML
     void submitApplication(ActionEvent event) {
-        if(isAtLeast18() && canWork() && hasJavaExperience() && hasHTMLExperience() && hasCPlusExperience() && hasCSharpExperience() && hasBachelors() && hasTroubleshootingSkills() && hasCommunicationSkills()){
+        //run through all methods
+        isAtLeast18();
+        canWork();
+        hasJavaExperience();
+        hasHTMLExperience();
+        hasCPlusExperience();
+        hasCSharpExperience();
+        hasBachelors();
+        hasTroubleshootingSkills();
+        hasCommunicationSkills();
+
+        if(accepted == true){
             applicationPane.setVisible(false);
             acceptancePane.setVisible(true);
         }
         else{
+            requirementsLbl.setText(missingRequirements);
             applicationPane.setVisible(false);
             rejectionPane.setVisible(true);
         }
@@ -158,6 +171,7 @@ public class Controller {
         }
         else{
             missingRequirements = missingRequirements + "\n-Not at least 18 years of age";
+            accepted = false;
             return false;
         }
     }
@@ -170,6 +184,7 @@ public class Controller {
        }
        else{
            missingRequirements = missingRequirements + "\n-Lacks enough Java experience";
+           accepted = false;
            return false;
        }
     }
@@ -181,6 +196,7 @@ public class Controller {
         }
         else{
             missingRequirements = missingRequirements + "\n-Lacks enough HTML experience";
+            accepted = false;
             return false;
         }
     }
@@ -192,6 +208,7 @@ public class Controller {
         }
         else{
             missingRequirements = missingRequirements + "\n-Lacks enough C++ experience";
+            accepted = false;
             return false;
         }
     }
@@ -203,6 +220,7 @@ public class Controller {
         }
         else{
             missingRequirements = missingRequirements + "\n-Lacks enough C# experience";
+            accepted = false;
             return false;
         }
     }
@@ -214,6 +232,7 @@ public class Controller {
         }
         else{
             missingRequirements = missingRequirements + "\n-Unable to work in the US";
+            accepted = false;
             return false;
         }
     }
@@ -225,6 +244,7 @@ public class Controller {
         }
         else{
             missingRequirements = missingRequirements + "\n-Lacks a Bachelor's Degree in Computer Science or engineering related field";
+            accepted = false;
             return false;
         }
     }
@@ -236,6 +256,7 @@ public class Controller {
         }
         else{
             missingRequirements = missingRequirements + "\n-Lacks troubleshooting skills";
+            accepted = false;
             return false;
         }
     }
@@ -247,6 +268,7 @@ public class Controller {
         }
         else{
             missingRequirements = missingRequirements + "\n-Lacks communication skills";
+            accepted = false;
             return false;
         }
     }
